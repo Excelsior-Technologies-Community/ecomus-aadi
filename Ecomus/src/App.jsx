@@ -3,6 +3,9 @@ import Navbar from './Components/Navbar';
 import Hero from './Components/Hero';
 import Marquee from './Components/Marquee';
 import Categories from './Components/Categories';
+import BestSeller from './Components/BestSeller';
+import Testimonials from './Components/Testimonials';
+import ShopTheLook from './Components/ShopTheLook';
 import BackToTop from './Components/BackToTop';
 import MobileBottomNav from './Components/MobileBottomNav';
 import ShopDrawer from './Pages/ShopDrawer';
@@ -18,6 +21,9 @@ export default function App() {
             <Hero />
             <Marquee />
             <Categories />
+            <ShopTheLook />
+            <BestSeller />
+            <Testimonials />
           </>
         } />
         {/* Placeholder routes for other pages */}
