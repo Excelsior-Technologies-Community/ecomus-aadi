@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useWishlist } from '../Context/WishlistContext';
 
 // Assets
 import orange1 from '../assets/products/orange-1.jpg';
@@ -136,6 +137,8 @@ const Countdown = ({ duration }) => {
 };
 
 const ProductCard = ({ product }) => {
+  const { toggleWishlist, isInWishlist } = useWishlist();
+  const isWishlisted = isInWishlist(product.id);
   return (
     <div className="group relative flex flex-col">
       <div className="relative aspect-[3/4] overflow-hidden bg-[#f5f5f5] rounded-[15px]">
@@ -165,9 +168,14 @@ const ProductCard = ({ product }) => {
             <span className="absolute right-[55px] invisible opacity-0 whitespace-nowrap rounded bg-black px-3 py-1.5 text-[12px] text-white transition-all group-hover/btn:visible group-hover/btn:opacity-100">Quick View</span>
           </button>
 
-          <button className="relative flex h-11 w-11 items-center justify-center rounded bg-white text-[#111] shadow-sm hover:bg-black hover:text-white transition-all duration-300 delay-100 translate-x-5 group-hover:translate-x-0 group/btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
-            <span className="absolute right-[55px] invisible opacity-0 whitespace-nowrap rounded bg-black px-3 py-1.5 text-[12px] text-white transition-all group-hover/btn:visible group-hover/btn:opacity-100">Add to Wishlist</span>
+          <button 
+            onClick={() => toggleWishlist(product)}
+            className={`relative flex h-11 w-11 items-center justify-center rounded bg-white shadow-sm hover:bg-black hover:text-white transition-all duration-300 delay-100 translate-x-5 group-hover:translate-x-0 group/btn ${isWishlisted ? 'bg-black text-white' : 'text-[#111]'}`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill={isWishlisted ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
+            <span className="absolute right-[55px] invisible opacity-0 whitespace-nowrap rounded bg-black px-3 py-1.5 text-[12px] text-white transition-all group-hover/btn:visible group-hover/btn:opacity-100">
+              {isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}
+            </span>
           </button>
 
           <button className="relative flex h-11 w-11 items-center justify-center rounded bg-white text-[#111] shadow-sm hover:bg-black hover:text-white transition-all duration-300 delay-150 translate-x-5 group-hover:translate-x-0 group/btn">

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useWishlist } from '../Context/WishlistContext';
 
 const MobileBottomNav = () => {
+  const { wishlist } = useWishlist();
   return (
     <div className="md:hidden fixed bottom-0 left-0 w-full bg-white z-[999] border-t border-gray-200 px-2 py-2 flex items-center justify-between shadow-[0_-2px_10px_rgba(0,0,0,0.05)] pb-safe-area">
       {/* Shop */}
@@ -48,7 +50,7 @@ const MobileBottomNav = () => {
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
           </svg>
-          <span className="absolute -top-[5px] -right-[5px] bg-[#f52b41] text-white text-[10px] font-bold w-[16px] h-[16px] flex items-center justify-center rounded-full leading-none">0</span>
+          <span className="absolute -top-[5px] -right-[5px] bg-[#f52b41] text-white text-[10px] font-bold w-[16px] h-[16px] flex items-center justify-center rounded-full leading-none">{wishlist.length}</span>
         </div>
         <span className="text-[11px] font-medium">Wishlist</span>
       </Link>

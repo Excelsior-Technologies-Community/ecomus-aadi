@@ -14,6 +14,7 @@ import BackToTop from './Components/BackToTop';
 import MobileBottomNav from './Components/MobileBottomNav';
 import ShopDrawer from './Pages/ShopDrawer';
 import MobileMenuDrawer from './Pages/MobileMenuDrawer';
+import Wishlist from './Pages/Wishlist';
 
 export default function App() {
   return (
@@ -38,7 +39,7 @@ export default function App() {
         <Route path="/products" element={<div className="pt-20 text-center">Products Page Coming Soon</div>} />
         <Route path="/pages" element={<div className="pt-20 text-center">Pages Coming Soon</div>} />
         <Route path="/blog" element={<div className="pt-20 text-center">Blog Page Coming Soon</div>} />
-        <Route path="/wishlist" element={<div className="pt-20 text-center">Wishlist Page Coming Soon</div>} />
+        <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/buy-now" element={<div className="pt-20 text-center">Buy Now Page Coming Soon</div>} />
       </Routes>
       <Footer />

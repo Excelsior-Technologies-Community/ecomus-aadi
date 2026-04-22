@@ -5,6 +5,7 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import Login from '../Pages/Login';
 import SearchDrawer from '../Pages/SearchDrawer';
+import { useWishlist } from '../Context/WishlistContext';
 
 // Assets
 import logo from '../assets/logo/logo.svg';
@@ -27,6 +28,7 @@ import flagDE from '../assets/flags/de.png';
 import flagVN from '../assets/flags/vn.png';
 
 const Navbar = () => {
+  const { wishlist } = useWishlist();
   const [activeMenu, setActiveMenu] = useState(null);
   const menuTimeoutRef = React.useRef(null);
   const [isVisible, setIsVisible] = useState(true);
@@ -679,7 +681,7 @@ const Navbar = () => {
            </button>
            <Link to="/wishlist" className="hover:text-black transition-colors relative hidden sm:block" title="Wishlist">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-              <span className="absolute -top-[6px] -right-[6px] bg-[#f52b41] text-white text-[11px] font-medium w-[18px] h-[18px] flex items-center justify-center rounded-full">0</span>
+              <span className="absolute -top-[6px] -right-[6px] bg-[#f52b41] text-white text-[11px] font-medium w-[18px] h-[18px] flex items-center justify-center rounded-full">{wishlist.length}</span>
            </Link>
            <button className="hover:text-black transition-colors relative" title="Cart">
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
