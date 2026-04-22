@@ -8,6 +8,7 @@ import Testimonials from './Components/Testimonials';
 import Brands from './Components/Brands';
 import ShopGram from './Components/ShopGram';
 import ServiceFeatures from './Components/ServiceFeatures';
+import Footer from './Components/Footer';
 import ShopTheLook from './Components/ShopTheLook';
 import BackToTop from './Components/BackToTop';
 import MobileBottomNav from './Components/MobileBottomNav';
@@ -40,6 +41,7 @@ export default function App() {
         <Route path="/wishlist" element={<div className="pt-20 text-center">Wishlist Page Coming Soon</div>} />
         <Route path="/buy-now" element={<div className="pt-20 text-center">Buy Now Page Coming Soon</div>} />
       </Routes>
+      <Footer />
       <MobileBottomNav />
       <ShopDrawer />
       <MobileMenuDrawer />
