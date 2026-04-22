@@ -141,37 +141,37 @@ const ProductCard = ({ product }) => {
       <div className="relative aspect-[3/4] overflow-hidden bg-[#f5f5f5] rounded-[15px]">
         {/* Images */}
         <a href="#" className="block h-full w-full">
-          <img 
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" 
-            src={product.img} 
-            alt={product.title} 
+          <img
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            src={product.img}
+            alt={product.title}
           />
-          <img 
-            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100" 
-            src={product.hoverImg} 
-            alt={product.title} 
+          <img
+            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            src={product.hoverImg}
+            alt={product.title}
           />
         </a>
 
         {/* Desktop Action Buttons (Vertical, Right Side) */}
         <div className="hidden md:flex absolute top-3 right-3 flex-col gap-2 z-10 opacity-0 group-hover:opacity-100 transition-all duration-500">
           <button className="relative flex h-11 w-11 items-center justify-center rounded bg-white text-[#111] shadow-sm hover:bg-black hover:text-white transition-all duration-300 translate-x-5 group-hover:translate-x-0 group/btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
             <span className="absolute right-[55px] invisible opacity-0 whitespace-nowrap rounded bg-black px-3 py-1.5 text-[12px] text-white transition-all group-hover/btn:visible group-hover/btn:opacity-100">Quick Add</span>
           </button>
-          
+
           <button className="relative flex h-11 w-11 items-center justify-center rounded bg-white text-[#111] shadow-sm hover:bg-black hover:text-white transition-all duration-300 delay-75 translate-x-5 group-hover:translate-x-0 group/btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0z" /><circle cx="12" cy="12" r="3" /></svg>
             <span className="absolute right-[55px] invisible opacity-0 whitespace-nowrap rounded bg-black px-3 py-1.5 text-[12px] text-white transition-all group-hover/btn:visible group-hover/btn:opacity-100">Quick View</span>
           </button>
 
           <button className="relative flex h-11 w-11 items-center justify-center rounded bg-white text-[#111] shadow-sm hover:bg-black hover:text-white transition-all duration-300 delay-100 translate-x-5 group-hover:translate-x-0 group/btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
             <span className="absolute right-[55px] invisible opacity-0 whitespace-nowrap rounded bg-black px-3 py-1.5 text-[12px] text-white transition-all group-hover/btn:visible group-hover/btn:opacity-100">Add to Wishlist</span>
           </button>
-          
+
           <button className="relative flex h-11 w-11 items-center justify-center rounded bg-white text-[#111] shadow-sm hover:bg-black hover:text-white transition-all duration-300 delay-150 translate-x-5 group-hover:translate-x-0 group/btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18 3 3 3-3"/><path d="M18 15V9a2 2 0 0 0-2-2H9"/><path d="m9 6-3-3-3 3"/><path d="M6 9v6a2 2 0 0 0 2 2h7"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18 3 3 3-3" /><path d="M18 15V9a2 2 0 0 0-2-2H9" /><path d="m9 6-3-3-3 3" /><path d="M6 9v6a2 2 0 0 0 2 2h7" /></svg>
             <span className="absolute right-[55px] invisible opacity-0 whitespace-nowrap rounded bg-black px-3 py-1.5 text-[12px] text-white transition-all group-hover/btn:visible group-hover/btn:opacity-100">Compare</span>
           </button>
         </div>
@@ -179,10 +179,10 @@ const ProductCard = ({ product }) => {
         {/* Mobile Action Buttons (Horizontal, Bottom Center) */}
         <div className="md:hidden absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
           <button className="flex h-10 w-10 items-center justify-center rounded bg-white text-[#111] shadow-md border border-gray-100 active:bg-black active:text-white transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
           </button>
           <button className="flex h-10 w-10 items-center justify-center rounded bg-white text-[#111] shadow-md border border-gray-100 active:bg-black active:text-white transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0z" /><circle cx="12" cy="12" r="3" /></svg>
           </button>
         </div>
 
@@ -208,16 +208,16 @@ const ProductCard = ({ product }) => {
         <div className="flex items-center gap-2">
           <span className="text-[14px] md:text-[16px] font-bold text-black">{product.price}</span>
         </div>
-        
+
         {product.colors && product.colors.length > 0 && (
           <div className="flex gap-2 mt-1 flex-wrap">
             {product.colors.map((color, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className={`w-5 h-5 md:w-6 md:h-6 rounded-full p-0.5 border cursor-pointer transition-all ${index === 0 ? 'border-black' : 'border-transparent hover:border-black'}`}
               >
-                <div 
-                  className="w-full h-full rounded-full" 
+                <div
+                  className="w-full h-full rounded-full"
                   style={{ backgroundColor: color.color, border: color.border ? '1px solid #e5e5e5' : 'none' }}
                 ></div>
               </div>

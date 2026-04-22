@@ -5,6 +5,9 @@ import Marquee from './Components/Marquee';
 import Categories from './Components/Categories';
 import BestSeller from './Components/BestSeller';
 import Testimonials from './Components/Testimonials';
+import Brands from './Components/Brands';
+import ShopGram from './Components/ShopGram';
+import ServiceFeatures from './Components/ServiceFeatures';
 import ShopTheLook from './Components/ShopTheLook';
 import BackToTop from './Components/BackToTop';
 import MobileBottomNav from './Components/MobileBottomNav';
@@ -24,6 +27,9 @@ export default function App() {
             <ShopTheLook />
             <BestSeller />
             <Testimonials />
+            <Brands />
+            <ShopGram />
+            <ServiceFeatures />
           </>
         } />
         {/* Placeholder routes for other pages */}

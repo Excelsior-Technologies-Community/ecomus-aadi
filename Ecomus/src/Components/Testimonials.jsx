@@ -87,7 +87,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-20 px-4 md:px-8 bg-white border-t border-gray-50">
+    <section className="pt-20 pb-0 px-4 md:px-8 bg-white border-t border-gray-50">
       <div className="max-w-[1320px] mx-auto relative px-4 md:px-12">
         <div className="text-center mb-16">
           <h2 className="text-[28px] md:text-[40px] font-medium text-black mb-3">Happy Clients</h2>
@@ -111,7 +111,7 @@ const Testimonials = () => {
               768: { slidesPerView: 2 },
               1100: { slidesPerView: 3 }
             }}
-            className="pb-8 md:pb-16"
+            className="pb-4 md:pb-6"
           >
             {testimonials.map((testimonial) => (
               <SwiperSlide key={testimonial.id}>
