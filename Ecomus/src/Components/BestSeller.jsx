@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useWishlist } from '../Context/WishlistContext';
+import { useCart } from '../Context/CartContext';
+import QuickAdd from './QuickAdd';
 
 // Assets
 import orange1 from '../assets/products/orange-1.jpg';
@@ -131,12 +133,12 @@ const Countdown = ({ duration }) => {
 
   return (
     <div className="text-[#e74c3c] font-bold text-sm">
-      {d}d : {h}h : {m}m : {s}s
+      {d}h : {h}m : {m}m : {s}s
     </div>
   );
 };
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, onQuickAdd }) => {
   const { toggleWishlist, isInWishlist } = useWishlist();
   const isWishlisted = isInWishlist(product.id);
   return (
@@ -158,7 +160,10 @@ const ProductCard = ({ product }) => {
 
         {/* Desktop Action Buttons (Vertical, Right Side) */}
         <div className="hidden md:flex absolute top-3 right-3 flex-col gap-2 z-10 opacity-0 group-hover:opacity-100 transition-all duration-500">
-          <button className="relative flex h-11 w-11 items-center justify-center rounded bg-white text-[#111] shadow-sm hover:bg-black hover:text-white transition-all duration-300 translate-x-5 group-hover:translate-x-0 group/btn">
+          <button 
+            onClick={() => onQuickAdd(product)}
+            className="relative flex h-11 w-11 items-center justify-center rounded bg-white text-[#111] shadow-sm hover:bg-black hover:text-white transition-all duration-300 translate-x-5 group-hover:translate-x-0 group/btn"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
             <span className="absolute right-[55px] invisible opacity-0 whitespace-nowrap rounded bg-black px-3 py-1.5 text-[12px] text-white transition-all group-hover/btn:visible group-hover/btn:opacity-100">Quick Add</span>
           </button>
@@ -186,7 +191,10 @@ const ProductCard = ({ product }) => {
 
         {/* Mobile Action Buttons (Horizontal, Bottom Center) */}
         <div className="md:hidden absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-          <button className="flex h-10 w-10 items-center justify-center rounded bg-white text-[#111] shadow-md border border-gray-100 active:bg-black active:text-white transition-colors">
+          <button 
+            onClick={() => onQuickAdd(product)}
+            className="flex h-10 w-10 items-center justify-center rounded bg-white text-[#111] shadow-md border border-gray-100 active:bg-black active:text-white transition-colors"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
           </button>
           <button className="flex h-10 w-10 items-center justify-center rounded bg-white text-[#111] shadow-md border border-gray-100 active:bg-black active:text-white transition-colors">
@@ -238,6 +246,14 @@ const ProductCard = ({ product }) => {
 };
 
 const BestSeller = () => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isQuickAddOpen, setIsQuickAddOpen] = useState(false);
+
+  const handleQuickAdd = (product) => {
+    setSelectedProduct(product);
+    setIsQuickAddOpen(true);
+  };
+
   return (
     <section className="py-16 px-4 md:px-8">
       <div className="max-w-[1320px] mx-auto">
@@ -248,7 +264,7 @@ const BestSeller = () => {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12 mb-12">
           {productsData.map(product => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} onQuickAdd={handleQuickAdd} />
           ))}
         </div>
 
@@ -258,6 +274,12 @@ const BestSeller = () => {
           </button>
         </div>
       </div>
+
+      <QuickAdd 
+        product={selectedProduct} 
+        isOpen={isQuickAddOpen} 
+        onClose={() => setIsQuickAddOpen(false)} 
+      />
     </section>
   );
 };

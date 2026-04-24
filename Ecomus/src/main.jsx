@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import { WishlistProvider } from './Context/WishlistContext.jsx'
 import { ToastProvider } from './Context/ToastContext.jsx'
+import { CartProvider } from './Context/CartContext.jsx'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
@@ -11,7 +12,9 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <ToastProvider>
         <WishlistProvider>
-          <App />
+          <CartProvider>
+            <App />
+          </CartProvider>
         </WishlistProvider>
       </ToastProvider>
     </BrowserRouter>
