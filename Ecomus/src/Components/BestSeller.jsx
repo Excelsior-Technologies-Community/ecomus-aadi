@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useWishlist } from '../Context/WishlistContext';
 import { useCart } from '../Context/CartContext';
 import QuickAdd from './QuickAdd';
+import QuickView from './QuickView';
 
 // Assets
 import orange1 from '../assets/products/orange-1.jpg';
@@ -138,7 +139,7 @@ const Countdown = ({ duration }) => {
   );
 };
 
-const ProductCard = ({ product, onQuickAdd }) => {
+const ProductCard = ({ product, onQuickAdd, onQuickView }) => {
   const { toggleWishlist, isInWishlist } = useWishlist();
   const isWishlisted = isInWishlist(product.id);
   return (
@@ -168,7 +169,10 @@ const ProductCard = ({ product, onQuickAdd }) => {
             <span className="absolute right-[55px] invisible opacity-0 whitespace-nowrap rounded bg-black px-3 py-1.5 text-[12px] text-white transition-all group-hover/btn:visible group-hover/btn:opacity-100">Quick Add</span>
           </button>
 
-          <button className="relative flex h-11 w-11 items-center justify-center rounded bg-white text-[#111] shadow-sm hover:bg-black hover:text-white transition-all duration-300 delay-75 translate-x-5 group-hover:translate-x-0 group/btn">
+          <button 
+            onClick={() => onQuickView(product)}
+            className="relative flex h-11 w-11 items-center justify-center rounded bg-white text-[#111] shadow-sm hover:bg-black hover:text-white transition-all duration-300 delay-75 translate-x-5 group-hover:translate-x-0 group/btn"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0z" /><circle cx="12" cy="12" r="3" /></svg>
             <span className="absolute right-[55px] invisible opacity-0 whitespace-nowrap rounded bg-black px-3 py-1.5 text-[12px] text-white transition-all group-hover/btn:visible group-hover/btn:opacity-100">Quick View</span>
           </button>
@@ -197,7 +201,10 @@ const ProductCard = ({ product, onQuickAdd }) => {
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
           </button>
-          <button className="flex h-10 w-10 items-center justify-center rounded bg-white text-[#111] shadow-md border border-gray-100 active:bg-black active:text-white transition-colors">
+          <button 
+            onClick={() => onQuickView(product)}
+            className="flex h-10 w-10 items-center justify-center rounded bg-white text-[#111] shadow-md border border-gray-100 active:bg-black active:text-white transition-colors"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0z" /><circle cx="12" cy="12" r="3" /></svg>
           </button>
         </div>
@@ -248,10 +255,16 @@ const ProductCard = ({ product, onQuickAdd }) => {
 const BestSeller = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isQuickAddOpen, setIsQuickAddOpen] = useState(false);
+  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
 
   const handleQuickAdd = (product) => {
     setSelectedProduct(product);
     setIsQuickAddOpen(true);
+  };
+
+  const handleQuickView = (product) => {
+    setSelectedProduct(product);
+    setIsQuickViewOpen(true);
   };
 
   return (
@@ -264,7 +277,12 @@ const BestSeller = () => {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12 mb-12">
           {productsData.map(product => (
-            <ProductCard key={product.id} product={product} onQuickAdd={handleQuickAdd} />
+            <ProductCard 
+              key={product.id} 
+              product={product} 
+              onQuickAdd={handleQuickAdd} 
+              onQuickView={handleQuickView}
+            />
           ))}
         </div>
 
@@ -279,6 +297,12 @@ const BestSeller = () => {
         product={selectedProduct} 
         isOpen={isQuickAddOpen} 
         onClose={() => setIsQuickAddOpen(false)} 
+      />
+
+      <QuickView
+        product={selectedProduct}
+        isOpen={isQuickViewOpen}
+        onClose={() => setIsQuickViewOpen(false)}
       />
     </section>
   );
